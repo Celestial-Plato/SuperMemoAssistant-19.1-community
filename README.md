@@ -1,5 +1,7 @@
 # SuperMemoAssistant 19.1 Community
 
+**简体中文** | [English](README.en.md)
+
 基于 [supermemo/SuperMemoAssistant](https://github.com/supermemo/SuperMemoAssistant) 的遗留源码，针对 **SuperMemo 19.1** 进行兼容性适配与 PDF 导入修复。PDF 插件基于 [supermemo/SuperMemoAssistant.Plugins.PDF](https://github.com/supermemo/SuperMemoAssistant.Plugins.PDF)。感谢原作者和贡献者，保留原 MIT 版权声明。本仓库为独立社区发布，不是原项目官方版本。
 
 ## 下载和安装
