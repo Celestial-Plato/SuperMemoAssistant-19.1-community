@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SuperMemoAssistant Plugin (Project only)</Name>
+    <Description>Bootstraps a new SMA Plugin project, without customized solution and build files. Only use this template with an existing SMA solution.</Description>
+    <Icon>Resources\robot.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <RequiredFrameworkVersion>4.7.2</RequiredFrameworkVersion>
+    <TargetPlatformName>Windows</TargetPlatformName>
+    <PlatformTag>Windows</PlatformTag>
+    <ProjectTypeTag>Desktop</ProjectTypeTag>
+    <ProjectTypeTag>Extension</ProjectTypeTag>
+    <ProjectTypeTag>Library</ProjectTypeTag>
+    <ProjectTypeTag>SMA</ProjectTypeTag>
+    <SortOrder>95</SortOrder>
+    <TemplateID>SuperMemoAssistant.Sdk.Templates.Projects.Plugin</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>SuperMemoAssistant.Plugins.MyPlugin</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <CreateInPlace>true</CreateInPlace>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj"
+             TargetFileName="$safeprojectname$.csproj"
+             ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true"
+                   TargetFileName="$finalPluginName$Plugin.cs"
+                   OpenInEditor="true">TemplatePlugin.cs</ProjectItem>
+      <ProjectItem>FodyWeavers.xml</ProjectItem>
+    </Project>
+    <CustomParameters>
+      <CustomParameter Name="$sentryDsn$" Value="Enter your Sentry.io api key (strongly recommended)" />
+    </CustomParameters>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>SuperMemoAssistant.Sdk.VisualStudio, Version=1.0.2.0, Culture=Neutral, PublicKeyToken=2b76fb24de6c73be</Assembly>
+    <FullClassName>SuperMemoAssistant.Sdk.VisualStudio.Wizards.PluginTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

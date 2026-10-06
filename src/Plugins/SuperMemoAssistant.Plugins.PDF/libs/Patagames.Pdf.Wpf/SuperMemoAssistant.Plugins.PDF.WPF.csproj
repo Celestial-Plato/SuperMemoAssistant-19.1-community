@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.props" Condition="Exists('..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{380A4F46-413D-49B4-884F-21C7683F093C}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Patagames.Pdf.Net.Controls.Wpf</RootNamespace>
+    <AssemblyName>Patagames.Pdf.Wpf</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyVersion>1.0.2716</AssemblyVersion>
+    <TargetFrameworkProfile />
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>None.None.None.None</AssemblyVersionSettings>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    <AssemblyFileVersionSettings>None.None.None.None</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>None.None.None.None</AssemblyInfoVersionSettings>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Patagames.Pdf, Version=8.55.29.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\lib\net472\Patagames.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.WinForms, Version=4.19.16.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\lib\net472\Patagames.Pdf.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.Wpf, Version=4.19.18.472, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\lib\net472\Patagames.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DispatcherISyncInvoke.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="HighlightInfo.cs" />
+    <Compile Include="MouseModes.cs" />
+    <Compile Include="PdfViewer.cs" />
+    <Compile Include="PRCollection.cs" />
+    <Compile Include="Print\BeforeRenderPageEventArgs.cs" />
+    <Compile Include="Print\PagePrintedEventArgs.cs" />
+    <Compile Include="Print\PdfDocumentPaginator.cs" />
+    <Compile Include="Print\PdfPrint.cs" />
+    <Compile Include="Print\PdfPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Print\PrintProgress.xaml.cs">
+      <DependentUpon>PrintProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Print\PrintSizeMode.cs" />
+    <Compile Include="Print\ThreadSafePrintDialog.cs" />
+    <Compile Include="PRItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RenderRect.cs" />
+    <Compile Include="SelectInfo.cs" />
+    <Compile Include="SizeModes.cs" />
+    <Compile Include="ToolBars\PdfToolBar.cs" />
+    <Compile Include="ToolBars\PdfToolBarClipboard.cs" />
+    <Compile Include="ToolBars\PdfToolBarMain.cs" />
+    <Compile Include="ToolBars\PdfToolBarPages.cs" />
+    <Compile Include="ToolBars\PdfToolBarRotate.cs" />
+    <Compile Include="ToolBars\PdfToolBarSearch.cs" />
+    <Compile Include="ToolBars\PdfToolBarSizes.cs" />
+    <Compile Include="ToolBars\PdfToolBarViewModes.cs" />
+    <Compile Include="ToolBars\PdfToolBarZoom.cs" />
+    <Compile Include="ToolBars\PdfToolBarZoomEx.cs" />
+    <Compile Include="ToolBars\SearchBar.xaml.cs">
+      <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModes.cs" />
+    <EmbeddedResource Include="Pdf.Net.SDK.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Directory.Build.targets" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Patagames.Pdf.Wpf.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Print\PrintProgress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ToolBars\SearchBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\docOpen.png" />
+    <Resource Include="Resources\docPrint.png" />
+    <Resource Include="Resources\down.png" />
+    <Resource Include="Resources\menu.png" />
+    <Resource Include="Resources\modeHorizontal.png" />
+    <Resource Include="Resources\modeSingle.png" />
+    <Resource Include="Resources\modeTiles.png" />
+    <Resource Include="Resources\modeVertical.png" />
+    <Resource Include="Resources\rotateLeft.png" />
+    <Resource Include="Resources\rotateRight.png" />
+    <Resource Include="Resources\selectAll.png" />
+    <Resource Include="Resources\textCopy.png" />
+    <Resource Include="Resources\toBegin.png" />
+    <Resource Include="Resources\toEnd.png" />
+    <Resource Include="Resources\toLeft.png" />
+    <Resource Include="Resources\toRight.png" />
+    <Resource Include="Resources\up.png" />
+    <Resource Include="Resources\viewActualSize.PNG" />
+    <Resource Include="Resources\viewFitHeight.PNG" />
+    <Resource Include="Resources\viewFitPage.PNG" />
+    <Resource Include="Resources\viewFitWidth.PNG" />
+    <Resource Include="Resources\zoomExIn.png" />
+    <Resource Include="Resources\zoomExOut.png" />
+    <Resource Include="Resources\zoomIn.png" />
+    <Resource Include="Resources\zoomOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\modeTwoPage.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="NuPack" AfterTargets="Build" Condition=" $(RunNuPack) == 'True' ">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <!-- If your .NET version is <3.5 and you get build error, move this ItemGroup outside of Target -->
+      <NuGetExe Include="$(SolutionDir)tools\nuget.exe" />
+      <VersionNumber Include="@(myAssemblyInfo->'%(Version)')" />
+    </ItemGroup>
+    <Exec Command="&quot;%(NuGetExe.FullPath)&quot; pack $(AssemblyName).nuspec -Version @(VersionNumber) -Properties Configuration=$(Configuration) -OutputDirectory $(SolutionDir)releases\nupkg -BasePath $(OutDir)" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.props'))" />
+    <Error Condition="!Exists('..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\build\Pdfium.Net.SDK.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\build\Pdfium.Net.SDK.targets'))" />
+  </Target>
+  <Import Project="..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.targets" Condition="Exists('..\..\..\..\..\packages\MSBuild.Tools.0.2.61\build\MSBuild.Tools.targets')" />
+  <Import Project="..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\build\Pdfium.Net.SDK.targets" Condition="Exists('..\..\..\..\..\packages\Pdfium.Net.SDK.4.53.2704\build\Pdfium.Net.SDK.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

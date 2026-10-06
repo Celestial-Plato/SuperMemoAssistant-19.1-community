@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd" >
+  <Anotar.Serilog />
+  <PropertyChanged/>  
+  <LoadAssembliesOnStartup>
+    <!--<ExcludeAssemblies>
+      Anotar.Serilog
+      Microsoft.CodeAnalysis
+      Microsoft.CodeAnalysis.CSharp
+      Microsoft.CodeAnalysis.CSharp.Workspaces
+      Microsoft.CodeAnalysis.Workspaces
+      Microsoft.Toolkit.Uwp.Notifications
+      Microsoft.Windows.SDK.Contracts
+      Windows.Embedded*
+    </ExcludeAssemblies>-->
+    <IncludeAssemblies>
+      PresentationCore
+      PresentationFramework
+      System.Xaml
+      WindowsBase
+      Pdfium.Net.SDK
+      Patagames.Pdf
+      Patagames.Pdf.Wpf
+    </IncludeAssemblies>
+  </LoadAssembliesOnStartup>
+</Weavers>

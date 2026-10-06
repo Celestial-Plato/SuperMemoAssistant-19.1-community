@@ -1,0 +1,11 @@
+<!-- Based on https://github.com/novotnyllc/MSBuildSdkExtras/blob/master/Tools/MSBuild.Packaging.targets -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup Label="GitVersioning">
+    <!--GitVersioning cannot find the git root and throws an error-->
+    <!--<GitRepoRoot>$(SolutionDir)</GitRepoRoot>-->
+  </PropertyGroup>
+  
+</Project>

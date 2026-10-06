@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>0.0.0.0</version>
+    <authors>Dave Glick, Alexis</authors>
+    <owners>inco</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/alexis-/System.IO.Extensions</projectUrl>
+
+    <id>Extensions.System.IO</id>
+    <title>Extensions.System.IO</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extends System.IO to make working with Files and Directories easier. Based on Wyam.</description>
+    <copyright></copyright>
+	
+    <dependencies>
+      <group targetFramework="netstandard2.0">
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Extensions.System.IO.dll" target="lib\netstandard2.0" />
+  </files>
+</package>

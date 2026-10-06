@@ -1,0 +1,22 @@
+<Project>
+  
+  <!-- https://github.com/kzu/GitInfo/blob/master/src/GitInfo/build/GitInfo.targets -->
+	<Target Name="_GitRoot" Returns="$(GitRoot)" Condition="'$(GitRoot)' == ''">
+
+		<Exec Command="$(GitExe) rev-parse --show-toplevel"
+          EchoOff="true"
+          StandardErrorImportance="high"
+          StandardOutputImportance="low"
+          ConsoleToMSBuild="true"
+          WorkingDirectory="$(MSBuildProjectDirectory)"
+          ContinueOnError="true">
+			<Output TaskParameter="ConsoleOutput" PropertyName="_GitOutput"/>
+			<Output TaskParameter="ExitCode" PropertyName="MSBuildLastExitCode" />
+		</Exec>
+
+		<PropertyGroup Condition=" '$(MSBuildLastExitCode)' == '0' ">
+			<GitRoot>$([MSBuild]::NormalizeDirectory($(_GitOutput.Trim())))</GitRoot>
+		</PropertyGroup>
+  </Target>
+  
+</Project>

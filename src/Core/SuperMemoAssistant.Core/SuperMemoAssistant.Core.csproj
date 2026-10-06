@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="SuperMemoAssistant.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <Platforms>x86</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Deterministic>true</Deterministic>
+    <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release</Configurations>
+    <NBGV_WriteProjectVersion>false</NBGV_WriteProjectVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\Process.NET\src\Process.NET\Process.NET.csproj" />
+    <ProjectReference Include="..\SuperMemoAssistant.Hooks.Common\SuperMemoAssistant.Hooks.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NativeDataCfg.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="SuperMemo\Common\Content\Layout\XamlLayouts\GenericLayout.xaml" />
+    <EmbeddedResource Include="SuperMemo\Common\Content\Layout\XamlLayouts\GenericLayout.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Anotar.Serilog.Fody">
+      <Version>5.1.3</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="AsyncErrorHandler.Fody" Version="1.3.0" />
+    <PackageReference Include="AsyncEvent">
+      <Version>0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="AvalonEdit">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="EasyHook">
+      <Version>2.7.7097</Version>
+      <ExcludeAssets>contentfiles</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Extensions.System.IO">
+      <Version>0.1.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="FastMember">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="FlaUI.UIA3">
+      <Version>2.0.0-rc1</Version>
+    </PackageReference>
+    <PackageReference Include="Fody">
+      <Version>6.5.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="FontAwesome5">
+      <Version>2.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.11.32</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.19041.1</Version>
+    </PackageReference>
+    <PackageReference Include="morelinq">
+      <Version>3.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="MSBuild.Tools" Version="0.2.61">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PluginManager.Core">
+      <Version>0.2.1.149</Version>
+      <ExcludeAssets>contentfiles; buildtransitive</ExcludeAssets>
+      <PrivateAssets>build; contentfiles; buildtransitive</PrivateAssets>
+      <IncludeAssets>runtime; compile; native; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody">
+      <Version>3.3.3</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="QueryString.NET">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Sentry.Serilog">
+      <Version>3.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="SuperMemoAssistant.Interop">
+      <Version>2.1.0-beta.18</Version>
+    </PackageReference>
+    <PackageReference Include="SuperMemoAssistant.Services.Sentry">
+      <Version>2.1.0-beta.6</Version>
+    </PackageReference>
+    <PackageReference Include="SuperMemoAssistant.Services.UI">
+      <Version>2.1.0-beta.12</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.Pkcs">
+      <Version>5.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sys\Converters\" />
+  </ItemGroup>
+</Project>

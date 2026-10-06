@@ -1,0 +1,26 @@
+<Project>
+
+  <PropertyGroup Label="PackageInfo">
+    <PackageIconUrl Condition=" '$(PackageIconUrl)' == '' ">https://github.com/supermemo/Documentation/raw/master/docs/sma/content/images/icons/robot.ico</PackageIconUrl>
+    <RepositoryType Condition=" '$(RepositoryType)' == '' ">git</RepositoryType>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="Package Settings">
+    <PackageOutputPath Condition=" '$(PackageOutputPath)' == '' ">$(SolutionDir)releases\</PackageOutputPath>
+    <IncludeSymbols Condition=" '$(IncludeSymbols)' == '' ">false</IncludeSymbols>
+    <SymbolPackageFormat Condition=" '$(SymbolPackageFormat)' == '' ">snupkg</SymbolPackageFormat>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePdbInPackage</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+
+  <Target Name="IncludePdbInPackage" Condition=" '$(IncludeBuildOutput.ToLower())' != 'false' ">
+    <PropertyGroup>
+      <PdbFilePath>$([System.IO.Path]::Combine('$(OutputPath)', '$(ProjectName).pdb'))</PdbFilePath>
+    </PropertyGroup>
+    <ItemGroup Condition="Exists('$(PdbFilePath)')">
+      <TfmSpecificPackageFile Include="$(PdbFilePath)">
+        <PackagePath>lib/$(TargetFramework)</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
+  
+</Project>

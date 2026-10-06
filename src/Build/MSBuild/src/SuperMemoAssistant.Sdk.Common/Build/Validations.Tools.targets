@@ -1,0 +1,8 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="ValidateTools" BeforeTargets="Build">
+    <Error Text="Git executable not found. Make sure Git for windows is installed in the default location, or is in your PATH environment variable."
+           Condition=" '$(GitExe)' == '' " />
+  </Target>
+
+</Project>

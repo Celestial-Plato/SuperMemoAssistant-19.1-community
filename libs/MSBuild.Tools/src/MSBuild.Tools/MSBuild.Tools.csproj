@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MSBuild.Tools</RootNamespace>
+    <AssemblyName>MSBuild.Tools</AssemblyName>
+    <PackageId>MSBuild.Tools.IgnoreCycle</PackageId>
+    <TargetFramework>net45</TargetFramework>
+    <Deterministic>true</Deterministic>
+    <AssemblyVersion>0.2.61.0</AssemblyVersion>
+    <FileVersion>0.2.61.0</FileVersion>
+    <Version>0.2.43</Version>
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease.None</AssemblyVersionSettings>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    <AssemblyFileVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease.None</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease.None</AssemblyInfoVersionSettings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="OpenMcdf" Version="2.2.1.4" />
+    <PackageReference Include="MSBuild.Tools" Version="0.2.41">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Target Name="Package" AfterTargets="Build" Condition=" $(SolutionConfiguration.StartsWith('NuPack')) ">
+    <PropertyGroup>
+      <NuSpecFileName>MSBuild.Tools.nuspec</NuSpecFileName>
+    </PropertyGroup>
+    <PropertyGroup>
+      <Git>git</Git>
+      <NuGet>$(SolutionDir)tools\nuget.exe</NuGet>
+      <MSBuildToolsExe>$(OutputPath)MSBuild.Tools.dll</MSBuildToolsExe>
+    </PropertyGroup>
+    <PropertyGroup>
+      <ReleaseDir>$(SolutionDir)releases\</ReleaseDir>
+      <NuSpecFile>$(ProjectDir)$(NuSpecFileName)</NuSpecFile>
+      <ChangeLogFile>$(SolutionDir)ChangeLogs</ChangeLogFile>
+    </PropertyGroup>
+    <GetAssemblyIdentity AssemblyFiles="$(MSBuildToolsExe)">
+      <Output TaskParameter="Assemblies" ItemName="smaAssembly" />
+    </GetAssemblyIdentity>
+    <PropertyGroup>
+      <Version>%(smaAssembly.Version)</Version>
+      <NuPkgFile>$(ReleaseDir)MSBuild.Tools.$(Version).nupkg</NuPkgFile>
+    </PropertyGroup>
+    <GitCreateChangeLog GitExecutable="$(Git)" Debug="False" GitDebug="False" PreserveChanges="False" RefSpec="HEAD" ChangeLogFilePath="$(ChangeLogFile)" NuSpecFilePath="$(NuSpecFile)">
+      <Output TaskParameter="CurrentVersionHasReleaseNotes" PropertyName="CurrentVersionHasReleaseNotes" />
+    </GitCreateChangeLog>
+    <Error Condition=" '$(CurrentVersionHasReleaseNotes)' == 'False' " Text="No release logs detected for current version. Commit your work to git before building your NuGet package." />
+    <WriteFile FilePath="$(SolutionDir)MSBuild.Tools.Version.props" Content="&lt;Project&gt;%0a  &lt;PropertyGroup&gt;%0a    &lt;MSBuildToolsVersionString&gt;$(Version)&lt;/MSBuildToolsVersionString&gt;%0a  &lt;/PropertyGroup&gt;%0a&lt;/Project&gt;" />
+    <Exec Command="$(NuGet) pack $(NuSpecFile) -Version $(Version) -OutputDirectory $(ReleaseDir) -BasePath $(OutputPath)" />
+    <Delete Files="$(SolutionDir)MSBuild.Tools.Version.props" />
+  </Target>
+</Project>

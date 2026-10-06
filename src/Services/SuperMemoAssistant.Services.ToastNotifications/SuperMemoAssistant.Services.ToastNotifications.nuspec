@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>0.0.0.0</version>
+    <authors>SuperMemo.wiki</authors>
+    <owners>SuperMemo</owners>
+    <license type="expression">MIT</license>
+    <iconUrl>https://github.com/supermemo/Documentation/raw/master/docs/sma/content/images/icons/robot.ico</iconUrl>
+    <projectUrl>https://github.com/supermemo/SuperMemoAssistant.Services.ToastNotifications</projectUrl>
+
+    <id>SuperMemoAssistant.Services.ToastNotifications</id>
+    <title>SuperMemo Assistant Toast Notifications Service</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides support for displaying and interacting with Windows Desktop Toast Notifications through the SMA API.</description>
+    <copyright></copyright>
+	
+    <dependencies>
+      <group targetFramework="net472">
+        <dependency id="SuperMemoAssistant.Interop" version="2.1.0-beta.3" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SuperMemoAssistant.Services.ToastNotifications.dll" target="lib\Net472" />
+    <file src="SuperMemoAssistant.Services.ToastNotifications.pdb" target="lib\Net472" />
+  </files>
+</package>

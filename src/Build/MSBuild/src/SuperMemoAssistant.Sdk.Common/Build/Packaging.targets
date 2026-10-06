@@ -1,0 +1,26 @@
+<Project>
+  
+  <Target Name="PreCheckPackage">
+    <PropertyGroup>
+      <PackageFileName>$(PackageId).$(PackageVersion).nupkg</PackageFileName>
+      <PackageFilePath>$([System.IO.Path]::Combine('$(PackageOutputPath)', '$(PackageFileName)'))</PackageFilePath>
+    </PropertyGroup>
+      
+    <Error Text="Package $(PackageFileName) already exists. Commit your work using git to create a new release, or delete the existing package. Package file path: '$(PackageFilePath)'"
+           Condition="Exists('$(PackageFilePath)')" />
+  </Target>
+
+  <Target Name="UpdateNuSpecVersion"
+          DependsOnTargets="GetBuildVersion;ReadPrereleaseSuffix"
+          Condition=" '$(NBGV_UseProjectVersion.ToLower())' == 'true' ">
+    <PropertyGroup>
+      <PackageVersion Condition=" '$(PrereleaseSuffix)' == '' ">$(BuildVersionSimple).$(GitVersionHeight)</PackageVersion>
+      <PackageVersion Condition=" '$(PrereleaseSuffix)' != '' ">$(BuildVersionSimple)$(PrereleaseSuffix).$(GitVersionHeight)</PackageVersion>
+    </PropertyGroup>
+  </Target>
+  
+  <Target Name="PreparePackage"
+          BeforeTargets="GenerateNuspec"
+          DependsOnTargets="UpdateNuSpecVersion ; PreCheckPackage ; CreateChangeLogs" />
+
+</Project>

@@ -1,0 +1,15 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="ValidateMSBuildTools" AfterTargets="BeforeBuild">
+    <Error Text="MSBuild.Tools package not referenced, or version is too old."
+           Condition=" '$(MSBuildToolsVersionString)' == '' " />
+
+    <PropertyGroup>
+      <MSBuildToolsMinVersion>0.2.61</MSBuildToolsMinVersion>
+    </PropertyGroup>
+
+    <Error Text="MSBuild.Tools must be &gt;= $(MSBuildToolsMinVersion). Current version $(MSBuildToolsVersionString)."
+           Condition="$([System.Version]::Parse($(MSBuildToolsVersionString))) &lt; $([System.Version]::Parse($(MSBuildToolsMinVersion)))" />
+  </Target>
+
+</Project>

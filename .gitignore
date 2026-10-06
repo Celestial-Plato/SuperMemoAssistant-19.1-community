@@ -1,0 +1,28 @@
+# Build outputs and local dependencies
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+**/packages/
+.nuget/
+.vs/
+/build/
+/release/
+/releases/
+*.dll
+*.exe
+*.pdb
+*.nupkg
+*.zip
+*.user
+*.suo
+*.snk
+*.pfx
+*.log
+__pycache__/
+# SuperMemo and personal data
+*.asm
+*.pdf
+/Configs/
+/Logs/
+/RecoveryBackups/

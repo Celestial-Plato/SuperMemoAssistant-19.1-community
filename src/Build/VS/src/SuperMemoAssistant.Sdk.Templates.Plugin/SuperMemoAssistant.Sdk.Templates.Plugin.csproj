@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{F51ABF17-3D07-46A0-A196-0BE449CA9DF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SuperMemoAssistant.Sdk.Templates.Plugin</RootNamespace>
+    <AssemblyName>SuperMemoAssistant.Sdk.Templates.Plugin</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <CreateVsixContainer>false</CreateVsixContainer>
+    <DeployExtension>false</DeployExtension>
+    <DeployVSTemplates>false</DeployVSTemplates>
+    <CopyVsixManifestToOutput>false</CopyVsixManifestToOutput>
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory>
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.CoreUtility">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <VSTemplate Include="SuperMemoAssistant.Sdk.Templates.Plugin.vstemplate" />
+    <VSTemplate Include="Solution\Solution.vstemplate" />
+    <VSTemplate Include="Projects\PluginTest\PluginTest.vstemplate" />
+    <VSTemplate Include="Projects\Plugin\Plugin.vstemplate" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Projects\PluginTest\ProjectTemplate.csproj" />
+    <None Include="Projects\Plugin\ProjectTemplate.csproj" />
+    <None Include="Solution\Content\.githooks" />
+    <None Include="Solution\Content\.githooks-src\commit-msg" />
+    <None Include="Solution\Content\.githooks-src\commit-msg.ps1" />
+    <None Include="Solution\Content\nuget.config" />
+    <None Include="Solution\Content\Plugin.sln.DotSettings" />
+    <None Include="Solution\Content\src\Directory.Build.props" />
+    <None Include="Solution\Content\src\Directory.Build.targets" />
+    <None Include="Solution\Content\src\global.json" />
+    <None Include="Solution\Content\src\version.json" />
+    <None Include="Solution\Content\src\.editorconfig" />
+    <None Include="Solution\Content\src\CodeStyle.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Projects\PluginTest\Resources\robot.ico" />
+    <None Include="Projects\Plugin\FodyWeavers.xml" />
+    <None Include="Projects\Plugin\Resources\robot.ico" />
+    <None Include="Projects\Plugin\TemplatePlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Solution\Content\assets\images\icons\concept_icon.jpg" />
+    <None Include="Solution\Content\assets\images\icons\item_icon.jpg" />
+    <None Include="Solution\Content\assets\images\icons\robot-128.png" />
+    <None Include="Solution\Content\assets\images\icons\robot-64.png" />
+    <None Include="Solution\Content\assets\images\icons\robot.ico" />
+    <None Include="Solution\Content\assets\images\icons\topic_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Projects\PluginTest\Class1.cs" />
+    <None Include="Solution\Content\releases\empty" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Target Name="BeforeBuild">
+    <ItemGroup Label="Source files to copy">
+      <SrcFiles Include="$(SolutionDir)src\.editorconfig" />
+      <SrcFiles Include="$(SolutionDir)src\CodeStyle.ruleset" />
+      <SrcFiles Include="$(SolutionDir)src\global.json" />
+      <SrcTestsFiles Include="$(SolutionDir)src\Tests\Directory.Build.targets" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SrcFiles)" DestinationFolder="$(ProjectDir)Solution\Content\src\" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(SrcTestsFiles)" DestinationFolder="$(ProjectDir)Solution\Content\src\Tests" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

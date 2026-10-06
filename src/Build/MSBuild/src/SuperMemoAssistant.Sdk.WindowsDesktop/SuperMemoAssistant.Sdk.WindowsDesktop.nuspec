@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <title>$title$</title>
+    <owners>$authors$</owners>
+    <authors>$authors$</authors>
+    <version>$version$</version>
+    <copyright>$copyright$</copyright>
+    <summary>$summary$</summary>
+    <description>$description$</description>
+    <tags>$tags$</tags>
+    <license type="expression">$license$</license>
+    <projectUrl>$projectUrl$</projectUrl>
+    <releaseNotes>$releaseNotes$</releaseNotes>
+    <repository type="$repositoryType$" url="$repositoryUrl$" commit="$sourceRevisionId$"/>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>true</developmentDependency>
+    <packageTypes>
+      <packageType name="$packageType$"/>
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="..\SuperMemoAssistant.Sdk.Common\Build\**\*" target="Build"/>
+    <file src="Sdk\**\*" target="Sdk"/>
+  </files>
+</package>

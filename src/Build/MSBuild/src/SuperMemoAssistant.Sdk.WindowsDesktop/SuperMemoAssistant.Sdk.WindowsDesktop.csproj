@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Build">
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Label="PackageInfo">
+    <Title>SuperMemo Assistant SDK (WPF)</Title>
+    <Summary>All-purpose SDK for SuperMemo Assistant projects.</Summary>
+    <Description>All-purpose SDK for SuperMemo Assistant projects.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\SuperMemoAssistant.Sdk.Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Tools" Version="0.2.61">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

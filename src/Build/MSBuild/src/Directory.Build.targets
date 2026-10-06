@@ -1,0 +1,51 @@
+<!-- Based on https://github.com/novotnyllc/MSBuildSdkExtras/blob/master/Tools/MSBuild.Packaging.targets -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <PropertyGroup Label="Packaging settings">
+    <Version>0.1.1</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
+    <NuspecFile Condition="Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).nuspec')">$(MSBuildProjectName).nuspec</NuspecFile>
+  </PropertyGroup>
+  
+  <Target Name="ClearPreviousPackage" AfterTargets="Clean">
+    <ItemGroup>
+      <ToDelete Include="$(PackageOutputPath)$(PackageId).s?nupkg"/>
+    </ItemGroup>
+
+    <Delete Files="@(ToDelete)"/>
+    <Exec Command='rd "$(NuGetPackageRoot)$(PackageId.ToLowerInvariant())" /q /s' Condition="Exists('$(NuGetPackageRoot)$(PackageId.ToLowerInvariant())') and $([MSBuild]::IsOSPlatform(Windows))"/>
+    <Exec Command='rm -rf "$(NuGetPackageRoot)$(PackageId.ToLowerInvariant())"' Condition="Exists('$(NuGetPackageRoot)$(PackageId.ToLowerInvariant())') and !$([MSBuild]::IsOSPlatform(Windows))"/>
+  </Target>
+  
+  <Target Name="SetNuSpecProperties" Condition="'$(NuspecFile)' != ''" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <!-- Reset 'SourceRevisionId' to default value when not set -->
+      <SourceRevisionId Condition="'$(SourceRevisionId)' == ''">0</SourceRevisionId>
+    </PropertyGroup>
+
+    <PropertyGroup>
+      <NuspecProperties>
+        id=$(PackageId);
+        title=$(Title);
+        version=$(PackageVersion);
+        summary=$(Summary);
+        description=$(Description);
+        authors=$(Authors.Replace(';',','));
+        copyright=$(Copyright);
+        tags=$(PackageTags.Replace(';',','));
+        repositoryType=$(RepositoryType);
+        repositoryUrl=$(RepositoryUrl);
+        projectUrl=$(PackageProjectUrl);
+        license=$(PackageLicenseExpression);
+        packageType=$(PackageType);
+        releaseNotes=$(PackageReleaseNotes);
+        sourceRevisionId=$(SourceRevisionId)
+      </NuspecProperties>
+    </PropertyGroup>
+  </Target>
+  
+</Project>

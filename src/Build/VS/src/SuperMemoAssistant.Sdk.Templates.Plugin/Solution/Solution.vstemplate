@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="2.0.0"
+            Type="ProjectGroup"
+            xmlns="http://schemas.microsoft.com/developer/vstemplate/2005"
+            xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SMA Dummy Solution Template</Name>
+    <Description>Dummy Template used to package the solution's content.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <Hidden>true</Hidden>
+    <RequiredFrameworkVersion>4.7.2</RequiredFrameworkVersion>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="Solution.csproj">
+      <ProjectItem>Content\.githooks</ProjectItem>
+      <ProjectItem>Content\nuget.config</ProjectItem> 
+      <ProjectItem>Content\Plugin.sln.DotSettings</ProjectItem>
+      <ProjectItem>Content\.githooks-src\commit-msg</ProjectItem>
+      <ProjectItem>Content\.githooks-src\commit-msg.ps1</ProjectItem>
+      <ProjectItem>Content\releases\empty</ProjectItem>
+      <ProjectItem>Content\src\.editorconfig</ProjectItem>
+      <ProjectItem>Content\src\CodeStyle.ruleset</ProjectItem>
+      <ProjectItem>Content\src\Directory.Build.props</ProjectItem>
+      <ProjectItem>Content\src\Directory.Build.targets</ProjectItem>
+      <ProjectItem>Content\src\global.json</ProjectItem>
+      <ProjectItem>Content\src\version.json</ProjectItem>
+      <ProjectItem>Content\assets\images\icons\concept_icon.jpg</ProjectItem>
+      <ProjectItem>Content\assets\images\icons\item_icon.jpg</ProjectItem>
+      <ProjectItem>Content\assets\images\icons\robot-128.png</ProjectItem>
+      <ProjectItem>Content\assets\images\icons\robot-64.png</ProjectItem>
+      <ProjectItem>Content\assets\images\icons\robot.ico</ProjectItem>
+      <ProjectItem>Content\assets\images\icons\topic_icon.jpg</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>SuperMemoAssistant.Sdk.VisualStudio, Version=1.0.2.0, Culture=Neutral, PublicKeyToken=2b76fb24de6c73be</Assembly>
+    <FullClassName>SuperMemoAssistant.Sdk.VisualStudio.Wizards.PluginTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

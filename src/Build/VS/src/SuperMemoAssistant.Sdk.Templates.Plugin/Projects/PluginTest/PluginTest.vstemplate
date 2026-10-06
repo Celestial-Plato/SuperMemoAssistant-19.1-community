@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SuperMemoAssistant Plugin Test (Project only)</Name>
+    <Description>Bootstraps a new test project for your SMA Plugin, without customized solution and build files. Only use this template with an existing SMA solution.</Description>
+    <Icon>Resources\robot.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <RequiredFrameworkVersion>4.7.2</RequiredFrameworkVersion>
+    <TargetPlatformName>Windows</TargetPlatformName>
+    <PlatformTag>Windows</PlatformTag>
+    <ProjectTypeTag>Test</ProjectTypeTag>
+    <ProjectTypeTag>Library</ProjectTypeTag>
+    <ProjectTypeTag>SMA</ProjectTypeTag>
+    <SortOrder>95</SortOrder>
+    <TemplateID>SuperMemoAssistant.Sdk.Templates.Projects.PluginTest</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>SuperMemoAssistant.Plugins.MyPlugin.Tests</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <CreateInPlace>true</CreateInPlace>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj"
+             TargetFileName="$safeprojectname$.csproj"
+             ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true">Class1.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>SuperMemoAssistant.Sdk.VisualStudio, Version=1.0.2.0, Culture=Neutral, PublicKeyToken=2b76fb24de6c73be</Assembly>
+    <FullClassName>SuperMemoAssistant.Sdk.VisualStudio.Wizards.PluginTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

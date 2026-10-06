@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="2.0.0"
+            Type="ProjectGroup"
+            xmlns="http://schemas.microsoft.com/developer/vstemplate/2005"
+            xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SuperMemoAssistant Plugin (Solution + Project)</Name>
+    <Description>Bootstraps a SMA Plugin project, with custom solution and build files.</Description>
+    <Icon>Resources\robot.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <RequiredFrameworkVersion>4.7.2</RequiredFrameworkVersion>
+    <TargetPlatformName>Windows</TargetPlatformName>
+    <PlatformTag>Windows</PlatformTag>
+    <ProjectTypeTag>Test</ProjectTypeTag>
+    <ProjectTypeTag>Library</ProjectTypeTag>
+    <ProjectTypeTag>SMA</ProjectTypeTag>
+    <SortOrder>94</SortOrder>
+    <DefaultName>SuperMemoAssistant.Plugins.MyPlugin</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Hidden</LocationField>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <SolutionFolder CreateOnDisk="false" Name="_Solution files"></SolutionFolder>
+      <!-- <SolutionFolder Name="Plugins">
+        <ProjectTemplateLink ProjectName="$safeprojectname$">
+          Projects\Plugin\Plugin.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+      <SolutionFolder Name="Tests">
+        <ProjectTemplateLink ProjectName="$safeprojectname$Test">
+          Projects\PluginTest\PluginTest.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>-->
+    </ProjectCollection>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>SuperMemoAssistant.Sdk.VisualStudio, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=2b76fb24de6c73be</Assembly>
+    <FullClassName>SuperMemoAssistant.Sdk.VisualStudio.Wizards.PluginTemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

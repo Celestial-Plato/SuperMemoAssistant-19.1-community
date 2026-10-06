@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.1.1.1</Version>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Mono.Posix.NETStandard" Version="1.0.0" />
+    <PackageReference Include="MSBuild.Tools" Version="0.2.61">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NuGet.CommandLine" Version="5.6.0">
+      <GeneratePathProperty>true</GeneratePathProperty>
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.7.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <Target Name="NuPack" AfterTargets="Build" Condition=" $(RunNuPack) == 'True' ">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <!-- If your .NET version is <3.5 and you get build error, move this ItemGroup outside of Target -->
+      <NuGetExe Include="$(PkgNuGet_CommandLine)\tools\nuget.exe" />
+      <VersionNumber Include="@(myAssemblyInfo->'%(Version)')" />
+    </ItemGroup>
+    <Exec Command="&quot;%(NuGetExe.FullPath)&quot; pack $(AssemblyName).nuspec -Version @(VersionNumber) -Properties Configuration=$(Configuration) -OutputDirectory $(ProjectDir)Releases -BasePath $(OutDir)" />
+  </Target>
+</Project>

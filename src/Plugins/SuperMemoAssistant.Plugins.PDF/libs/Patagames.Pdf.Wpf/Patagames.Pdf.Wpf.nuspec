@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <version>0.0.0.0</version>
+    <authors>Alexis</authors>
+    <owners>SuperMemo</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/supermemo/SuperMemoAssistant.Plugins.PDF</projectUrl>
+    <iconUrl>https://github.com/supermemo/Documentation/raw/master/docs/sma/content/images/icons/robot.ico</iconUrl>
+
+    <id>SuperMemoAssistant.Plugins.PDF.WPF</id>
+    <title>SuperMemo Assistant WPF library for the PDF plugin</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.</description>
+    <tags>SuperMemo SuperMemoAssistant Plugin Plugins PDF WPF</tags>
+    <copyright></copyright>
+	
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="PresentationFramework" />
+      <frameworkAssembly assemblyName="PresentationCore" />
+      <frameworkAssembly assemblyName="ReachFramework" />
+      <frameworkAssembly assemblyName="System.Runtime.Remoting" />
+      <frameworkAssembly assemblyName="System.Xaml" />
+      <frameworkAssembly assemblyName="WindowsBase" />
+    </frameworkAssemblies>
+
+    <dependencies>
+      <group targetFramework="net472">
+        <dependency id="Pdfium.Net.SDK" version="4.22.2704" />
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="Patagames.Pdf.Wpf.dll" target="lib\net472" />
+    <file src="Patagames.Pdf.Wpf.pdb" target="lib\net472" />
+    <file src="Patagames.Pdf.Wpf.xml" target="lib\net472" />
+  </files>
+</package>

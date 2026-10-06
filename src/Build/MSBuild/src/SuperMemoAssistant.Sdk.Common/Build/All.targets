@@ -1,0 +1,8 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="Validations.Packages.targets" />
+  <Import Project="Validations.Tools.targets" />
+  <Import Project="Git.targets" />
+  <Import Project="ChangeLog.targets" />
+  <Import Project="Build.targets" />
+  <Import Project="Packaging.targets" />
+</Project>

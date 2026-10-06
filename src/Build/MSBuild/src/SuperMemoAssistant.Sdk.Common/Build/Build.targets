@@ -1,0 +1,66 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="ReadPrereleaseSuffix" Returns="PrereleaseSuffix">
+    <PropertyGroup>
+      <SolutionConfigurationRegex>\d+\.\s*(?&lt;name&gt;[\w-]+).*</SolutionConfigurationRegex>
+
+      <PrereleaseSuffix>$([System.Text.RegularExpressions.Regex]::Match('$(SolutionConfiguration)', '$(SolutionConfigurationRegex)').get_Groups().get_Item('name'))</PrereleaseSuffix>
+      <PrereleaseSuffix Condition=" '$(PrereleaseSuffix)' != '' ">-$(PrereleaseSuffix.ToLower())</PrereleaseSuffix>
+      <PrereleaseSuffix Condition=" '$(PrereleaseSuffix)' == '-stable' "></PrereleaseSuffix>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="OverridePreRelease"
+          DependsOnTargets="ReadPrereleaseSuffix"
+          AfterTargets="GetBuildVersion">
+    <PropertyGroup>
+      <PrereleaseVersion>$(PrereleaseSuffix)</PrereleaseVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="NBGV_CheckAndSaveProjectVersionInfo"
+          BeforeTargets="BeforeBuild"
+          DependsOnTargets="ValidateMSBuildTools;ReadPrereleaseSuffix"
+          Condition=" '$(NBGV_WriteProjectVersion.ToLower())' == 'true' And '$(NBGV_CheckAndSaveProjectVersionInfoFlag)' == '' ">
+    <Error Text="Project $(AssemblyName) doesn't define a 'Version' property"
+           Condition=" '$(Version)' == '' " />
+
+    <PropertyGroup>
+      <NBGV_CheckAndSaveProjectVersionInfoFlag>true</NBGV_CheckAndSaveProjectVersionInfoFlag>
+      <VersionJsonFilePath Condition=" '$(VersionJsonFilePath)' == '' ">version.json</VersionJsonFilePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <_VersionJsonContent Condition=" '$(PrereleaseSuffix)' != '' " Include=".">
+        <version>$(Version)$(PrereleaseSuffix)</version>
+      </_VersionJsonContent>
+      <_VersionJsonContent Condition=" '$(PrereleaseSuffix)' == '' " Include=".">
+        <version>$(Version)</version>
+      </_VersionJsonContent>
+    </ItemGroup>
+
+    <WriteJsonFile FilePath="$(VersionJsonFilePath)"
+                   NodesContent="@(_VersionJsonContent)" />
+  </Target>
+  
+  <Target Name="NBGV_CancelGetBuildVersionBeforePack"
+          Condition=" '$(NBGV_UseProjectVersion.ToLower())' == 'true' ">
+    <PropertyGroup>
+      <_GNDOGetBuildVersionIndex>$(GenerateNuspecDependsOn.IndexOf("GetBuildVersion"))</_GNDOGetBuildVersionIndex>
+      <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn.Remove($(_GNDOGetBuildVersionIndex), 16).Trim())</GenerateNuspecDependsOn>
+    </PropertyGroup>
+  </Target>
+
+  <!-- Supplement NBGV versions with height -->
+  <!-- Original https://github.com/xunit/xunit/blob/42031495bc52d10d52733e4af9ea33a8c1257a05/src/Directory.Build.targets -->
+  <Target Name="UpdateAssemblyVersionInfo"
+          BeforeTargets="GenerateAssemblyVersionInfo"
+          DependsOnTargets="GetBuildVersion;ReadPrereleaseSuffix"
+          Condition=" '$(NBGV_UseProjectVersion.ToLower())' == 'true' ">
+    <PropertyGroup>
+      <AssemblyInformationalVersion Condition=" '$(PrereleaseSuffix)' == '' ">$(BuildVersionSimple).$(GitVersionHeight)</AssemblyInformationalVersion>
+      <AssemblyInformationalVersion Condition=" '$(PrereleaseSuffix)' != '' ">$(BuildVersionSimple)$(PrereleaseSuffix).$(GitVersionHeight)</AssemblyInformationalVersion>
+    </PropertyGroup>
+  </Target>
+  
+</Project>

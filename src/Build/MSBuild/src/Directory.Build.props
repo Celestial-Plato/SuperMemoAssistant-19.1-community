@@ -1,0 +1,21 @@
+<!-- Based on https://github.com/novotnyllc/MSBuildSdkExtras/blob/master/Tools/MSBuild.Packaging.targets -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup Label="PackageInfo">
+    <RepositoryUrl>https://github.com/supermemo/SuperMemoAssistant.Sdk</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/supermemo/SuperMemoAssistant.Sdk</PackageProjectUrl>
+    <PackageTags>msbuild;sdk;supermemoassistant;supermemo</PackageTags>
+    <PackageIcon></PackageIcon>
+    <PackageIconUrl></PackageIconUrl>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <PackageType>MSBuildSdk</PackageType>
+    <Serviceable>true</Serviceable>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="Package Settings">
+    <IncludeSymbols>false</IncludeSymbols>
+  </PropertyGroup>
+  
+</Project>

@@ -1,0 +1,4 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\Build\All.targets" />
+</Project>

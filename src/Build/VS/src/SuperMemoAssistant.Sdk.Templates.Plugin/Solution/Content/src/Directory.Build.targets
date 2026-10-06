@@ -1,0 +1,20 @@
+<Project>
+
+  <ItemGroup Label="Packages (Git link)"
+             Condition=" '$(MSBuildProjectExtension)'=='.csproj' And '$(IgnoreGitPackages.ToLower())' == '' ">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.74" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Label="Packages (Analyzers)"
+             Condition=" '$(MSBuildProjectExtension)'=='.csproj' And '$(IgnoreAnalyzerPackages.ToLower())' == '' ">
+    <PackageReference Update="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.7.0" PrivateAssets="All" />
+    <PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers" Version="16.8.55" PrivateAssets="All" />
+    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1" PrivateAssets="All" />
+    <PackageReference Update="Roslynator.Analyzers" Version="3.1.0" PrivateAssets="All" />
+    <PackageReference Update="WpfAnalyzers" Version="3.5.4" PrivateAssets="All" />
+    <PackageReference Update="SerilogAnalyzer" Version="0.15.0" PrivateAssets="All" />
+    <PackageReference Update="AsyncFixer" Version="1.5.1" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

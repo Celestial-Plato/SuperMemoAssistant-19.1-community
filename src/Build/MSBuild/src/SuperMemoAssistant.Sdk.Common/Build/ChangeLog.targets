@@ -1,0 +1,15 @@
+<Project>
+  <Target Name="CreateChangeLogs" DependsOnTargets="_GitRoot">
+  
+    <PropertyGroup>
+      <ChangeLogFile Condition=" '$(ChangeLogFile)' == '' ">$(GitRoot)ChangeLogs</ChangeLogFile>
+    </PropertyGroup>
+    
+    <GitCreateChangeLog GitExecutable="$(GitExe)" PreserveChanges="False" RefSpec="$(ChangeLogRefSpec)" TagSortField="$(ChangeLogTagSortField)" Categories="$(ChangeLogCategories)" Debug="False" GitDebug="False" ChangeLogFilePath="$(ChangeLogFile)" NuSpecFilePath="$(NuSpecFile)">
+      <Output TaskParameter="CurrentVersionHasReleaseNotes" PropertyName="CurrentVersionHasReleaseNotes" />
+      <Output TaskParameter="CurrentVersionReleaseNotes" PropertyName="PackageReleaseNotes" />
+    </GitCreateChangeLog>
+    
+    <Error Condition=" '$(CurrentVersionHasReleaseNotes)' == 'False' " Text="No release logs detected for current version. Commit your work to git before building your NuGet package." />
+  </Target>
+</Project>

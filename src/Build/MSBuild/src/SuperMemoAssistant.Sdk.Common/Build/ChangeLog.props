@@ -1,0 +1,9 @@
+<Project>
+
+  <PropertyGroup>
+    <ChangeLogCategories Condition=" '$(ChangeLogCategories)' == '' ">Added;Updated;Fixed;Removed;Misc</ChangeLogCategories>
+    <ChangeLogRefSpec>HEAD</ChangeLogRefSpec>
+    <ChangeLogTagSortField>committerdate</ChangeLogTagSortField>
+  </PropertyGroup>
+  
+</Project>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="SuperMemoAssistant.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SuperMemoAssistant.Plugins.ImageOcclusion</RootNamespace>
+    <Deterministic>true</Deterministic>
+    <UseWPF>true</UseWPF>
+    <AssemblyVersion>2.0.4.1</AssemblyVersion>
+    <FileVersion>2.0.4.1</FileVersion>
+    <Version>2.0.4</Version>
+  </PropertyGroup>
+  <PropertyGroup Label="PackageInfo">
+    <RepositoryUrl>https://github.com/supermemo/SuperMemoAssistant.Plugins.ImageOcclusion</RepositoryUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="imageocclusioneditor.ico" />
+    <Content Include="Resources\Licenses\LICENSE.svg-edit.txt" />
+    <Content Include="Resources\Licenses\LICENSE.vvv-svg.txt" />
+    <Content Include="svgedit\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Services\SuperMemoAssistant.Services.Medias.Images\SuperMemoAssistant.Services.Medias.Images.csproj">
+      <Project>{677647e4-f052-41d0-915a-ad76da72463e}</Project>
+      <Name>SuperMemoAssistant.Services.Medias.Images</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Anotar.Serilog.Fody">
+      <Version>5.1.3</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Extensions.System.IO">
+      <Version>0.1.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="FileSignatures">
+      <Version>4.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Fody">
+      <Version>6.3.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MSBuild.Tools">
+      <Version>0.2.61</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="OpenMcdf">
+      <Version>2.2.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="OpenMcdf-2">
+      <Version>2.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="PluginManager.Interop">
+      <Version>0.2.1.51</Version>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody">
+      <Version>3.3.0</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Sentry.Serilog">
+      <Version>2.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="SuperMemoAssistant.Interop">
+      <Version>2.1.0-beta.7</Version>
+    </PackageReference>
+    <PackageReference Include="SuperMemoAssistant.Services.Sentry">
+      <Version>2.1.0-beta.2</Version>
+    </PackageReference>
+    <PackageReference Include="Svg">
+      <Version>3.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Visualize.Fody">
+      <Version>1.2.0</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Target Name="CopyOutput" AfterTargets="Build">
+    <Exec Command="xcopy /h /i /c /k /e /r /y &quot;$(TargetDir)*&quot; &quot;%25UserProfile%25\SuperMemoAssistant\Plugins\Development\$(ProjectName)&quot;" />
+  </Target>
+  <ItemGroup>
+    <PackageReference Update="AsyncFixer" Version="1.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers" Version="16.8.55" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Roslynator.Analyzers" Version="3.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="WpfAnalyzers" Version="3.3.0" />
+  </ItemGroup>
+</Project>
